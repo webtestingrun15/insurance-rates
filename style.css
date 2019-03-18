@@ -17,6 +17,13 @@ h5 {
   color: yellow;
 }
 
-.fas {
+.fa-phone {
   transform: rotate(90deg);
+}
+
+ul li {
+  list-style-type: none;
+  font-size: 1.3rem;
+  font-weight: 300;
+  line-height: 1.5;
 }
