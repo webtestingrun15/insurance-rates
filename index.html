@@ -31,15 +31,15 @@
                         <input type="text" class="form-control" placeholder="Zip Code">
                     </div>
                     <div class="form-group row">
-                        <select class="form-control">
-                            <option>Currently Insured?</option>
+                        <select id="insuredOption" class="form-control">
+                            <option selected>Currently Insured?</option>
                             <option>Yes</option>
                             <option>No</option>
                         </select>
                     </div>
                     <div class="form-group row">
-                        <select class="form-control">
-                            <option>Your Age Range</option>
+                        <select id="ageRange" class="form-control">
+                            <option selected>Your Age Range</option>
                             <option>Under 25</option>
                             <option>25 to 34</option>
                             <option>45 to 55</option>
@@ -47,9 +47,27 @@
                         </select>
                     </div>
                     <div class="row mb-3">
-                        <button class="btn btn-danger btn-block">Find Lower Rates</button>
+
+                        <button type="button" id="rates" class="btn btn-danger btn-block">Find Lower Rates</button>
                         <button class="btn btn-primary btn-block"><i class="fas fa-phone fa-lg"></i> Talk to a Live
                             Agent</button>
+
+
+                        <div class="modal fade" id="ratesModal" tabindex="-1" role="dialog"
+                            aria-labelledby="RatesModalTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <h3 id="message" class="text-center">
+                                            ...
+                                        </h3>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                     </div>
                     <p class="text-secondary text-center">Your information is safe and secure.</p>
@@ -73,9 +91,32 @@
 
     </section>
 
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script>
+        let rate = document.querySelector('#rates');
+        let insured = document.querySelector('#insuredOption');
+        let noRates = document.querySelector('#ratesModal');
+        let modalMessage = document.querySelector('#message');
+        let ageRange = document.querySelector('#ageRange');
+
+        rate.addEventListener("click", function (event) {
+            event.preventDefault();
+            if (insured.value === 'No') {
+                $('#message').text("Sorry, no rates available.");
+                $('#ratesModal').modal('show');
+            } else if ((insured.value === 'Yes') && (ageRange.selectedIndex > 2)) {
+                $('#message').text("Yes, we have great rates available.");
+                $('#ratesModal').modal('show');
+            } else if ((insured.value === 'Yes') && (ageRange.selectedIndex <= 2) && (ageRange.selectedIndex !=
+                    0)) {
+                $('#message').text("Coming Soon.");
+                $('#ratesModal').modal('show');
+            }
+        })
+    </script>
 </body>
 
 </html>
