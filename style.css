@@ -3,7 +3,7 @@ body {
 }
 
 #start {
-  background: url('images/bg.jpg') center bottom / cover no-repeat;
+  background: url(images/bg.jpg) center bottom / cover no-repeat;
   position: relative;
   min-height: 675px;
 }
