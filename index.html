@@ -15,7 +15,7 @@
 <body>
     <section id="start" class="container-fluid overflow-hidden">
         <div class="row justify-content-center">
-            <div class="col col-sm-7 col-md-5 col-lg-4 col-xl-4 mt-5">
+            <div class="col col-sm-7 col-md-5 col-lg-4 col-xl-4 mt-3 mt-md-5">
                 <div class="mb-5">
                     <h1 class="display-5 text-white">Lower Your Auto Insurance Rates</h1>
                     <h5 class="yellow">Compare Rates to Save On Your Policy Today!</h5>
@@ -49,8 +49,8 @@
                     <div class="row mb-3">
 
                         <button type="button" id="rates" class="btn btn-danger btn-block">Find Lower Rates</button>
-                        <button class="btn btn-primary btn-block"><i class="fas fa-phone fa-lg"></i> Talk to a Live
-                            Agent</button>
+                        <button class="btn btn-primary btn-block" id="talk"><i class="fas fa-phone fa-lg"></i> Talk to
+                            Live Agent</button>
 
 
                         <div class="modal fade" id="ratesModal" tabindex="-1" role="dialog"
@@ -77,16 +77,16 @@
     </section>
     <section class="container-fluid mt-5 ">
         <div class="row flex-column align-items-center">
-            <h1 class="text-danger text-center">
+            <h2 class="text-danger text-center">
                 We provide free quotes from top providers in your area in less time.
-            </h1>
+            </h2>
             <ul>
                 <li><i class="fas fa-check"></i> Save time researching policies.</li>
                 <li><i class="fas fa-check"></i> Get a fast response with no waiting.</li>
                 <li> <i class="fas fa-check"></i> Compare low-cost policies.</li>
                 <li><i class="fas fa-check"></i> Save up to 30% on auto insurance.</li>
             </ul>
-            <img src="images/cars.jpg" alt="Cars" class="img-fluid ml-md-5">
+            <img src="images/cars.jpg" alt="Cars" class="img-fluid">
         </div>
 
     </section>
@@ -101,6 +101,7 @@
         let noRates = document.querySelector('#ratesModal');
         let modalMessage = document.querySelector('#message');
         let ageRange = document.querySelector('#ageRange');
+        let talk = document.querySelector('#talk');
 
         rate.addEventListener("click", function (event) {
             event.preventDefault();
@@ -114,8 +115,16 @@
                     0)) {
                 $('#message').text("Coming Soon.");
                 $('#ratesModal').modal('show');
+            } else {
+                $("#message").text("Please choose an option");
+                $('#ratesModal').modal('show');
             }
-        })
+        });
+        talk.addEventListener("click", function (event) {
+            event.preventDefault();
+            $("#message").text("Coming Soon");
+            $('#ratesModal').modal('show');
+        });
     </script>
 </body>
 
